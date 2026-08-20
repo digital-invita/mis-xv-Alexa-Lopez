@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV | Alexa López</title>
+
+  <meta name="description" content="Acompáñanos a celebrar este día tan especial.">
+  <meta property="og:title" content="Mis XV | Alexa López">
+  <meta property="og:description" content="Acompáñanos a celebrar este día tan especial.">
+  <meta property="og:image" content="media/portada-og.jpg">
+  <meta property="og:image:secure_url" content="media/portada-og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="media/portada-og.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=20">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png?v=20">
+  <link rel="shortcut icon" href="favicon.png?v=20">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="media/fprincipal.jpg" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Bodoni+Moda:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Cormorant+Infant:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=EB+Garamond:wght@400;500;600;700&family=Forum&family=Fredoka:wght@500;600;700&family=GFS+Didot&family=Great+Vibes&family=Imperial+Script&family=Italianno&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;500;600;700&family=Marcellus&family=Montserrat:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Nanum+Myeongjo:wght@400;700;800&family=Orbitron:wght@500;600;700;800&family=Parisienne&family=Petit+Formal+Script&family=Pinyon+Script&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Prata&family=Sacramento&family=Tangerine:wght@400;700&display=block" rel="stylesheet">
+
+  <link rel="preload" href="assets/styles.css?v=20260820-hero-text-colors-v103" as="style">
+  <link rel="stylesheet" href="assets/styles.css?v=20260820-hero-text-colors-v103">
+
+</head>
+<body class="locked">
+  <div class="smart-background" id="smartBackground" aria-hidden="true">
+    <img id="smartBackgroundImage" alt="">
+  </div>
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+    <div class="overlay-card">
+      <div class="overlay-scene" id="overlayScene">
+        <p class="overlay-kicker" id="overlayKicker">Mis XV</p>
+        <div class="overlay-title-wrap">
+          <span class="title-glow" aria-hidden="true"></span>
+          <h1 class="overlay-title" id="overlayTitle">Nombre de la festejada</h1>
+        </div>
+        <button class="wax-btn" id="openBtn" type="button" aria-label="Abrir invitación">
+          <img id="sealImage" src="sello_cera.png" alt="Sello para abrir invitación" decoding="async" fetchpriority="high">
+        </button>
+        <div class="launch-status" aria-hidden="true">
+          <span></span>
+          <strong>Sistemas listos</strong>
+          <span></span>
+        </div>
+        <div class="wax-caption">Abrir invitación</div>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="warp-flash" id="warpFlash" aria-hidden="true">
+    <span class="elegant-spark" style="--spark-angle:-158deg;--spark-distance:112px;--spark-delay:.02s;--spark-trail:24px"></span>
+    <span class="elegant-spark" style="--spark-angle:-118deg;--spark-distance:86px;--spark-delay:.11s;--spark-trail:18px"></span>
+    <span class="elegant-spark" style="--spark-angle:-42deg;--spark-distance:104px;--spark-delay:.06s;--spark-trail:26px"></span>
+    <span class="elegant-spark" style="--spark-angle:18deg;--spark-distance:122px;--spark-delay:.14s;--spark-trail:21px"></span>
+    <span class="elegant-spark" style="--spark-angle:66deg;--spark-distance:92px;--spark-delay:.08s;--spark-trail:17px"></span>
+    <span class="elegant-spark" style="--spark-angle:142deg;--spark-distance:108px;--spark-delay:.16s;--spark-trail:23px"></span>
+  </div>
+  <div class="mission-accepted" id="missionAccepted" aria-hidden="true">Misión aceptada</div>
+
+  <audio id="audio" loop preload="metadata">
+    <source src="cancio.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="page">
+    <section class="hero">
+      <img id="heroImage" src="media/FPrincipal.jpg" alt="Portada de la invitación" decoding="async" fetchpriority="high">
+      <video id="heroVideo" class="hero-video" muted loop playsinline preload="metadata" hidden></video>
+      <canvas id="heroParticles" aria-hidden="true"></canvas>
+      <div class="hero-hud" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="hero-content">
+        <div class="hero-label" id="heroLabel">Mis XV</div>
+        <h1 class="hero-name" id="nombre">Nombre de la festejada</h1>
+        <div class="hero-date" id="fechaEvento"></div>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section story-section" id="storySection">
+      <h2 id="storyTitle">Mi historia</h2>
+      <p class="story-text" id="storyText1" data-fulltext=""></p>
+      <div class="featured-photo">
+        <img id="storyImage" src="media/FHistoria.jpg" alt="Fotografía principal" loading="lazy" decoding="async">
+      </div>
+      <p class="story-text" id="storyText2" data-fulltext=""></p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="parentsSection">
+      <span class="eyebrow" id="parentsEyebrow">En compañía de mis padres</span>
+      <div class="script-block" id="parentsNames"></div>
+      <div class="parents-grid" id="parentsGroups" hidden></div>
+      <div class="grandparents-block" id="grandparentsBlock" hidden>
+        <span class="grandparents-eyebrow" id="grandparentsEyebrow">Y con la bendición de mis abuelos</span>
+        <div class="family-names" id="grandparentsNames"></div>
+      </div>
+      <p id="parentsInviteText" style="margin-top:16px;"></p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="godparentsSection">
+      <span class="eyebrow" id="godparentsEyebrow">Mis padrinos</span>
+      <div class="script-block" id="godparentsNames"></div>
+      <div class="godparents-list" id="godparentsItems" hidden></div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="ceremonySection">
+      <h2 id="ceremonyTitle">Ceremonia</h2>
+      <div class="event-card">
+        <div class="event-time" id="ceremonyTime"></div>
+        <div class="event-place-group">
+          <div class="event-place" id="ceremonyPlace"></div>
+          <div class="event-place-detail" id="ceremonyPlaceDetail" hidden></div>
+        </div>
+        <div class="event-media-stack" id="ceremonyIconWrap">
+          <div class="dresscode-figure">
+            <img id="ceremonyImage" src="media/cereminia.png" alt="Ceremonia" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="event-media-stack" id="ceremonyMapWrap" hidden>
+          <div class="map">
+            <iframe id="ceremonyMapEmbed" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la ceremonia"></iframe>
+          </div>
+        </div>
+        <div class="event-media-stack" id="ceremonyPhotoWrap" hidden>
+          <div class="event-place-photo">
+            <img id="ceremonyPhoto" src="" alt="Lugar de la ceremonia" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div>
+          <a class="btn" id="ceremonyMapLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Cómo llegar</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="receptionSection">
+      <h2 id="receptionTitle">Recepción</h2>
+      <div class="event-card">
+        <div class="event-time" id="receptionTime"></div>
+        <div class="event-place-group">
+          <div class="event-place" id="receptionPlace"></div>
+          <div class="event-place-detail" id="receptionPlaceDetail" hidden></div>
+        </div>
+        <div class="event-media-stack" id="receptionIconWrap" hidden>
+          <div class="dresscode-figure">
+            <img id="receptionImage" src="" alt="Recepción" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="event-media-stack" id="receptionMapWrap" hidden>
+          <div class="map">
+            <iframe id="receptionMapEmbed" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa del salón"></iframe>
+          </div>
+        </div>
+        <div class="event-media-stack" id="receptionPhotoWrap" hidden>
+          <div class="event-place-photo">
+            <img id="receptionPhoto" src="" alt="Lugar de la recepción" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div>
+          <a class="btn" id="receptionMapLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Cómo llegar</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="timelineSection">
+      <h2>Itinerario</h2>
+      <div class="timeline" id="timelineList"></div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="countdown-section">
+      <h2 id="countdownTitle">Faltan pocos días</h2>
+      <p id="countdownIntro">La cuenta regresiva ha comenzado para vivir un momento inolvidable.</p>
+      <div class="countdown-shell">
+        <div id="countdown" aria-live="polite"></div>
+        <div class="countdown-caption" id="countdownCaption">Preparando una noche inolvidable.</div>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="gallerySection">
+      <h2>Galería</h2>
+      <div class="gallery-showcase">
+        <div class="gallery-stage" id="galleryStage">
+          <img src="media/G1.jpg" alt="Galería destacada" id="galleryPreviewImg" loading="lazy" decoding="async">
+          <video id="galleryPreviewVideo" class="gallery-preview-video" controls playsinline preload="none" hidden></video>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-meta">
+            <strong id="galleryMetaIndex">Foto 1 de 6</strong>
+            <span id="galleryMetaHint">Toca una imagen para destacar o abrir.</span>
+          </div>
+          <div class="gallery-nav">
+            <button type="button" id="galleryPrev" aria-label="Foto anterior">‹</button>
+            <button type="button" id="galleryNext" aria-label="Foto siguiente">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="dressSection">
+      <h2 id="dressTitle">Dress Code</h2>
+      <ul class="dress-code-list" id="dressValue"><li>Formal</li></ul>
+      <div class="dresscode-figure">
+        <img id="dressImage" src="media/vestimenta.png" alt="Código de vestimenta" loading="lazy" decoding="async">
+      </div>
+      <p class="mini-note" id="dressNote"></p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section adult-notice-section" id="adultNoticeSection" role="note">
+      <h2 id="adultNoticeTitle">Una celebración para adultos</h2>
+      <p id="adultNoticeText">Con mucho cariño, hemos preparado esta celebración exclusivamente para adultos.<br>Agradecemos mucho su comprensión.</p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="rsvpSection">
+      <h2>Confirma tu presencia</h2>
+      <div class="rsvp-personalization" id="rsvpPersonalization" hidden>
+        <span class="rsvp-personalization__eyebrow">Invitación preparada especialmente para</span>
+        <strong class="rsvp-personalization__recipient" id="rsvpPersonalizationRecipient"></strong>
+        <span class="rsvp-personalization__divider" aria-hidden="true"></span>
+        <p class="rsvp-personalization__message" id="rsvpPersonalizationText"></p>
+        <div class="rsvp-personalization__passes">
+          <span>Cupo reservado</span>
+          <strong id="rsvpPersonalizationPasses"></strong>
+        </div>
+      </div>
+      <div class="rsvp-invalid" id="rsvpInvalidNotice" hidden>
+        <span>Invitación no válida</span>
+        <strong>Solicita una invitación válida para poder confirmar.</strong>
+        <p>Este enlace no contiene los datos necesarios o ya no está registrado para este evento.</p>
+      </div>
+      <div class="rsvp-card">
+        <div class="field" id="guestNameField">
+          <label for="guestName" id="guestNameLabel">Tu nombre</label>
+          <input type="text" id="guestName" placeholder="Escríbelo aquí">
+        </div>
+        <div class="field" id="guestCountField">
+          <label for="guestCount">¿Cuántas personas asistirán?</label>
+          <select id="guestCount" data-pases="6">
+            <option value="">Selecciona una opción</option>
+          </select>
+        </div>
+        <div class="family-members" id="familyMembersField" hidden>
+          <div class="family-members__head">
+            <strong>Nombres de quienes asistirán</strong>
+          <span>Escribe el nombre de cada persona que asistirá.</span>
+          </div>
+          <div class="family-members__list" id="familyMembersList"></div>
+        </div>
+        <div class="rsvp-buttons">
+          <button type="button" id="confirmYes">Confirmar asistencia</button>
+          <button type="button" id="confirmNo" class="btn-secondary">No podré asistir</button>
+        </div>
+      </div>
+      <div class="rsvp-receipt" id="rsvpReceipt" hidden>
+        <span class="rsvp-receipt__eyebrow">Confirmación registrada</span>
+        <h3 id="rsvpReceiptTitle">¡Gracias por confirmar!</h3>
+        <p id="rsvpReceiptText">Nos dará mucho gusto compartir este momento con ustedes. Nos vemos pronto.</p>
+        <div class="rsvp-receipt__identity">
+          <strong id="rsvpReceiptName"></strong>
+          <span id="rsvpReceiptCount"></span>
+        </div>
+        <div class="rsvp-receipt__attendees" id="rsvpReceiptAttendees" hidden></div>
+        <div class="rsvp-receipt__qr" id="rsvpReceiptQr" aria-label="Código QR de confirmación"></div>
+        <span class="rsvp-receipt__qr-label">Pase digital de acceso</span>
+        <span class="rsvp-receipt__folio" id="rsvpReceiptFolio"></span>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="giftSection">
+      <h2 id="giftTitle">Opciones de regalo</h2>
+      <p id="giftIntro">Tu presencia es el regalo más valioso para mí, pero si deseas tener un detalle, aquí encontrarás algunas opciones pensadas con mucho cariño.</p>
+
+      <div class="gift-options">
+        <div class="gift-option-card" id="giftOption1Card">
+          <div class="gift-option-media">
+            <img class="envelope" id="envelopeImage" src="sobre.png" alt="Lluvia de sobres" loading="lazy" decoding="async">
+          </div>
+          <h3 class="gift-option-title" id="giftOption1Title">Lluvia de sobres</h3>
+          <p class="gift-option-copy" id="giftOption1Copy">Si lo prefieres, podrás acompañarme con un sobre el día del evento. Será un detalle recibido con muchísimo cariño y gratitud.</p>
+        </div>
+
+        <div class="gift-option-card" id="giftOption2Card">
+          <div class="gift-option-media">
+            <img class="surprise" id="surpriseImage" src="regalo.png" alt="Regalo sorpresa" loading="lazy" decoding="async">
+          </div>
+          <h3 class="gift-option-title" id="giftOption2Title">Regalo sorpresa</h3>
+          <p class="gift-option-copy" id="giftOption2Copy">También puedes sorprenderme con un detalle especial elegido por ti. Lo importante será el cariño con el que venga.</p>
+        </div>
+      </div>
+
+      <p class="mini-note" id="giftLinksIntro" style="margin-top:18px;">Si prefieres elegir un detalle en línea, también puedes apoyarte en estas opciones de mesa de regalos:</p>
+
+      <div class="gift-links" id="giftLinks"></div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="agendaSectionUi">
+      <h2>Agenda este momento</h2>
+      <div class="utilities">
+        <a class="btn" href="#" id="calendarBtn">Agregar al calendario</a>
+        <a class="btn" href="#countdown-section" id="verCuenta">Ver cuenta regresiva</a>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="section" id="albumSection">
+      <h2 id="albumTitle">Álbum digital</h2>
+      <div class="album-card">
+        <p id="albumCopy">Comparte las mejores fotos de este gran día y conserva en un solo lugar los recuerdos más especiales.</p>
+        <a class="album-qr" id="albumQrLink" href="#" target="_blank" rel="noopener noreferrer" hidden aria-label="Abrir álbum digital con código QR">
+          <span class="album-qr-shell"><span id="albumQrCanvas" aria-hidden="true"></span></span>
+          <span class="album-qr-caption">Escanea para abrir el álbum</span>
+        </a>
+        <div class="utilities">
+          <a class="btn" href="#" id="albumBtn" target="_blank" rel="noopener noreferrer">Ver álbum digital</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="separator"></div>
+    <div class="closing-note" id="closingNote">Gracias por ser parte de este momento inolvidable</div>
+
+    <footer class="brand-footer">
+      <div class="brand-copy">
+        <p class="brand-caption">Invitación creada con amor digital</p>
+        <a class="brand-link" id="brandLink" href="https://www.facebook.com/profile.php?id=61587804296779&locale=es_LA" target="_blank" rel="noopener noreferrer">Creado por Digital Invita</a>
+        <p class="brand-question">Invitaciones digitales para eventos</p>
+      </div>
+      <div class="brand-cta">
+        <a id="brandCtaLink" href="https://wa.me/525550591264?text=Hola%2C%20estoy%20interesado%28a%29%20en%20una%20invitaci%C3%B3n%20digital%20para%20mi%20evento.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20dise%C3%B1os%2C%20precios%20y%20lo%20que%20incluye." target="_blank" rel="noopener noreferrer">Contáctanos</a>
+      </div>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galería ampliada">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="closeLightbox" type="button" aria-label="Cerrar galería">×</button>
+      <div class="lightbox-main">
+        <div class="viewer-counter" id="viewerCounter">1 / 6</div>
+        <button class="lightbox-nav lightbox-nav--prev" id="lightboxPrev" type="button" aria-label="Multimedia anterior">‹</button>
+        <button class="lightbox-nav lightbox-nav--next" id="lightboxNext" type="button" aria-label="Multimedia siguiente">›</button>
+        <img class="lightbox-img" id="lightboxImg" alt="Imagen ampliada">
+        <video class="lightbox-video" id="lightboxVideo" controls playsinline preload="metadata" hidden></video>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </div>
+
+  <button class="floating-btn" id="musicBtn" type="button" aria-label="Pausar música"></button>
+  <button class="floating-btn" id="toTopBtn" type="button" aria-label="Volver arriba">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/qr-code-styling.js?v=20260812-album-qr-center-v20" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js" defer></script>
+  <script src="assets/app.js?v=20260820-rsvp-invite-validation-v102" defer></script>
+
+</body>
+</html>
